@@ -16,9 +16,9 @@ export const footerContent = {
   followMe: {
     title: "Follow Me",
     items: [
-      { label: "→ GitHub", href: "https://github.com" },
-      { label: "→ LinkedIn", href: "https://linkedin.com" },
-      { label: "→ Instagram", href: "https://instagram.com" },
+      { label: "→ GitHub", href: "https://github.com/m1kael1" },
+      { label: "→ LinkedIn", href: "https://linkedin.com/mikaelagung" },
+      { label: "→ Instagram", href: "https://instagram.com/makaelagng" },
     ],
   },
 
