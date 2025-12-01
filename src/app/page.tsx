@@ -22,7 +22,8 @@ export default function Home() {
     const handleScroll = () => {
       if (window.scrollY > 1 && !showModal) {
         setShowModal(true)
-        document.body.style.overflow = 'hidden'
+        document.documentElement.classList.add("no-scroll")
+        document.body.classList.add("no-scroll")
       }
     }
     window.addEventListener('scroll', handleScroll)
@@ -30,13 +31,12 @@ export default function Home() {
   }, [showModal, isAuthenticated])
 
   useEffect(() => {
-    if (!showModal) {
-      document.body.style.overflow = 'auto'
-    }
-
-    if (isAuthenticated) {
-      setShowModal(false)
-      document.body.style.overflow = 'auto'
+    if (showModal && !isAuthenticated) {
+      document.documentElement.classList.add("no-scroll")
+      document.body.classList.add("no-scroll")
+    } else {
+      document.documentElement.classList.remove("no-scroll")
+      document.body.classList.remove("no-scroll")
     }
   }, [showModal, isAuthenticated])
 
