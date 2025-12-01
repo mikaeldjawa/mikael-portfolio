@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { useEffect, useState } from 'react'
 import Welcome from '@/components/welcome'
@@ -8,14 +8,19 @@ import Footer from '@/components/footer'
 import { LoginModal } from '@/components/login/log-in-modal'
 import { useLogin } from '@/hooks/use-login'
 import LogoutButton from '@/components/login/log-out'
-import { is } from 'zod/locales'
-
 
 export default function Home() {
   const { form, loading, error, isAuthenticated, handleLogin, logout } = useLogin()
   const [showModal, setShowModal] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+
     const saved = localStorage.getItem('isAuthenticated')
     if (saved === 'true') return
 
@@ -26,11 +31,14 @@ export default function Home() {
         document.body.classList.add("no-scroll")
       }
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [showModal, isAuthenticated])
+  }, [isMounted, showModal, isAuthenticated])
 
   useEffect(() => {
+    if (!isMounted) return
+
     if (showModal && !isAuthenticated) {
       document.documentElement.classList.add("no-scroll")
       document.body.classList.add("no-scroll")
@@ -38,16 +46,17 @@ export default function Home() {
       document.documentElement.classList.remove("no-scroll")
       document.body.classList.remove("no-scroll")
     }
-  }, [showModal, isAuthenticated])
+  }, [isMounted, showModal, isAuthenticated])
 
-
+  if (!isMounted) return null
 
   return (
-    <main>
+    <section>
       <Welcome />
       <AboutMe />
       <Projects />
       <Footer />
+
       {showModal && !isAuthenticated && (
         <LoginModal
           form={form}
@@ -61,7 +70,6 @@ export default function Home() {
       {isAuthenticated && (
         <LogoutButton onLogout={logout} />
       )}
-
-    </main>
+    </section>
   )
 }

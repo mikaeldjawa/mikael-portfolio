@@ -14,7 +14,7 @@ const ProjectCard = ({
   link
 }: ProjectCard) => {
   return (
-    <div className="card-project min-w-[500px] mr-10 group h-full">
+    <div className="card-project w-full md:min-w-[500px] mr-10 group h-full mx-0">
       <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:-translate-y-1">
         <div className="relative h-[300px] overflow-hidden border-b-4 border-black bg-neutral-100">
           <img

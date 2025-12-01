@@ -34,7 +34,7 @@ export const projects = [
     title: "AgroVanil",
     description: "A Vanilla disease detection app.",
     image: "/assets/projects/agro-vanil.png",
-    stacks: ["React", "TypeScript", "Zod"],
+    stacks: ["Next.js", "TypeScript", "FastAPI", "Python", "Docker"],
     link: "/",
   },
 ];

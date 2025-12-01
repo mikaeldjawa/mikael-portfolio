@@ -77,13 +77,14 @@ export const useProjectsAnimation = (
         sectionRef.current,
         { translateX: 0 },
         {
-          translateX: "-200%",
+          translateX: isMobile ? "1%" : "-225%",
+          transformOrigin: "50% 50%",
           ease: "none",
           duration: 1,
           scrollTrigger: {
             trigger: triggerRef.current,
             start: "top top",
-            end: "+=200%",
+            end: isMobile ? "0" : "+=500%",
             scrub: 0.6,
             pin: true,
             anticipatePin: 1,
@@ -92,11 +93,6 @@ export const useProjectsAnimation = (
           },
         }
       );
-
-      if (isMobile) {
-        ScrollTrigger.refresh();
-        return () => pin.scrollTrigger?.kill();
-      }
 
       if (pin.scrollTrigger) triggers.push(pin.scrollTrigger);
 

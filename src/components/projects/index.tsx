@@ -14,13 +14,23 @@ export default function Projects() {
 
   return (
     <section ref={triggerRef} className="overflow-hidden bg-neutral-50 flex">
-      <div ref={sectionRef} className="flex h-screen w-screen items-center">
 
-        <div className="min-w-screen relative px-8">
+      <div
+        ref={sectionRef}
+        className="
+      flex 
+      h-auto w-full 
+      flex-col gap-10 
+      md:h-screen md:w-screen md:flex-row md:items-center
+    "
+      >
+        <div className="w-full md:min-w-screen relative px-8">
           <ProjectsTitle ref={titleRef} />
         </div>
 
-        <div className="flex flex-no-wrap md:items-center justify-center">
+        <div
+          className="flex flex-col gap-6 md:flex-row md:flex-no-wrap md:items-center md:justify-center"
+        >
           {projects.map((project, i) => (
             <ProjectCard key={i} {...project} />
           ))}
@@ -28,5 +38,6 @@ export default function Projects() {
 
       </div>
     </section>
+
   );
 }
