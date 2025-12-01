@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://dummyjson.com/user",
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
 });
 
 const getAccessToken = () => localStorage.getItem("accessToken");
