@@ -18,25 +18,21 @@ export default function AboutContent({ triggerRef }: AboutContentProps) {
     const timer = setTimeout(() => {
       if (!textRef.current || !triggerRef?.current) return;
 
-      const triggers: ScrollTrigger[] = [];
       const split = new SplitType(textRef.current, {
         types: "words",
       });
 
       gsap.set(split.words, { opacity: 0.2, filter: "blur(8px)" });
 
-      const tl = gsap.timeline({
+      gsap.timeline({
         scrollTrigger: {
           trigger: textRef.current,
           start: "top top",
           end: "+=450%",
           scrub: 1,
-          invalidateOnRefresh: true,
-          id: "about-text"
+          invalidateOnRefresh: true
         }
-      });
-
-      tl.to(split.words, {
+      }).to(split.words, {
         opacity: 1,
         filter: "blur(0px)",
         stagger: 0.05,
@@ -55,40 +51,18 @@ export default function AboutContent({ triggerRef }: AboutContentProps) {
             start: "top top",
             end: "+=250%",
             scrub: 1,
-            invalidateOnRefresh: true,
-            id: "about-logos"
           }
         });
 
         logoTL
-          .to(nextLogo.current, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.2,
-            ease: "back.out(2)"
-          }, 0.4)
-          .to(tsLogo.current, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.2,
-            ease: "back.out(2)"
-          }, 0.6)
-          .to(reactLogo.current, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.2,
-            ease: "back.out(2)"
-          }, 0.8);
+          .to(nextLogo.current, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 0.4)
+          .to(tsLogo.current, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 0.6)
+          .to(reactLogo.current, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 0.8);
       }
 
-      return () => {
-        triggers.forEach(trigger => trigger.kill());
-      };
     }, 150);
 
-    return () => {
-      clearTimeout(timer);
-    };
+    return () => clearTimeout(timer);
   }, [triggerRef]);
 
   return (
@@ -97,8 +71,11 @@ export default function AboutContent({ triggerRef }: AboutContentProps) {
         ref={textRef}
         className="text-2xl md:text-4xl lg:text-5xl font-medium text-neutral-500 leading-relaxed"
       >
-        I'm an Informatics graduate passionate about crafting clean, responsive, and user-friendly interfaces using
-        Next.js
+        <span className="relative inline-block font-semibold text-neutral-900 px-1">
+          I am Mikael
+          <span className="absolute inset-0 bg-neutral-200/50 -z-10 rounded-md"></span>
+        </span>, an Informatics graduate passionate about crafting clean,
+        responsive, and user-friendly interfaces using Next.js
         <div
           ref={nextLogo}
           className='bg-white rounded-full inline-block w-10 md:w-12 ml-2 opacity-0'
