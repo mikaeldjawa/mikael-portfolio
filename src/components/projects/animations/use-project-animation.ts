@@ -84,7 +84,7 @@ export const useProjectsAnimation = (
           scrollTrigger: {
             trigger: triggerRef.current,
             start: "top top",
-            end: isMobile ? "0" : "+=500%",
+            end: isMobile ? "0" : "+=200%",
             scrub: 0.6,
             pin: true,
             anticipatePin: 1,
