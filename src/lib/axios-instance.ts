@@ -2,7 +2,6 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://dummyjson.com/user",
-  withCredentials: true,
 });
 
 const getAccessToken = () => localStorage.getItem("accessToken");

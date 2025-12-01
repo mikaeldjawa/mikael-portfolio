@@ -3,31 +3,38 @@ export const projects = [
     title: "ProjectMe",
     description:
       "A project management app with Kanban board, scheduling, and team discussion features.",
-    image: "https://via.placeholder.com/600x400?text=ProjectMe",
+    image: "/assets/projects/project-me.jpg",
     stacks: ["Next.js", "TypeScript", "TailwindCSS", "Zustand", "PocketBase"],
-    link: "https://example.com/projectme",
+    link: "/",
   },
   {
     title: "Helpdesk Emailing System",
     description:
       "Internal helpdesk communication platform for messaging, email tracking, and archiving.",
-    image: "https://via.placeholder.com/600x400?text=Helpdesk+System",
+    image: "/assets/projects/neo-desk.png",
     stacks: ["Next.js", "TypeScript", "TailwindCSS", "PocketBase"],
-    link: "https://example.com/helpdesk",
+    link: "/",
   },
   {
     title: "Yokes Furniture Store",
     description:
       "Modern furniture store UI with real-time updates and optimized performance.",
-    image: "https://via.placeholder.com/600x400?text=Yokes+Furniture",
+    image: "/assets/projects/yokes.png",
     stacks: ["Next.js", "TypeScript", "TailwindCSS", "SWR"],
-    link: "https://example.com/yokes",
+    link: "/",
   },
   {
     title: "ResuCraft",
     description: "A resume builder app with Zod validation and PDF exporting.",
-    image: "https://via.placeholder.com/600x400?text=ResuCraft",
+    image: "/assets/projects/resu-craft.png",
     stacks: ["React", "TypeScript", "Zod"],
-    link: "https://example.com/resucraft",
+    link: "/",
+  },
+  {
+    title: "AgroVanil",
+    description: "A Vanilla disease detection app.",
+    image: "/assets/projects/agro-vanil.png",
+    stacks: ["React", "TypeScript", "Zod"],
+    link: "/",
   },
 ];

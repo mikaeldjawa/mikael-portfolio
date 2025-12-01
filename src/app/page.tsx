@@ -1,4 +1,5 @@
 'use client'
+
 import { useEffect, useState } from 'react'
 import Welcome from '@/components/welcome'
 import AboutMe from '@/components/about-me'
@@ -6,10 +7,12 @@ import Projects from '@/components/projects'
 import Footer from '@/components/footer'
 import { LoginModal } from '@/components/login/log-in-modal'
 import { useLogin } from '@/hooks/use-login'
+import LogoutButton from '@/components/login/log-out'
+import { is } from 'zod/locales'
 
 
 export default function Home() {
-  const { form, loading, error, isAuthenticated, handleLogin } = useLogin()
+  const { form, loading, error, isAuthenticated, handleLogin, logout } = useLogin()
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
@@ -24,20 +27,19 @@ export default function Home() {
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [showModal])
+  }, [showModal, isAuthenticated])
 
   useEffect(() => {
     if (!showModal) {
       document.body.style.overflow = 'auto'
     }
-  }, [showModal])
 
-  useEffect(() => {
     if (isAuthenticated) {
       setShowModal(false)
       document.body.style.overflow = 'auto'
     }
-  }, [isAuthenticated])
+  }, [showModal, isAuthenticated])
+
 
 
   return (
@@ -55,6 +57,11 @@ export default function Home() {
           onClose={() => setShowModal(false)}
         />
       )}
+
+      {isAuthenticated && (
+        <LogoutButton onLogout={logout} />
+      )}
+
     </main>
   )
 }
